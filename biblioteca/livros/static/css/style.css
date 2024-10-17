@@ -1,0 +1,72 @@
+/* Colocando a fonte no geral*/
+*{
+    font-family: "Bebas Neue", sans-serif;  
+    font-size: 18px;
+    font-style: normal; 
+}
+
+/* Navbar */
+
+.navbar{
+    background-color: #b28015 !important;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.navbar a{
+    color: white;
+}
+
+/* rodapé */
+
+.rodape{
+    background-color: rgba(0, 0, 0, 0.829);
+    height: 250px;
+}
+
+.rodape p{
+    top: 50%;
+    position: relative;
+}
+
+/* Conteudo do site*/
+
+.content{
+    height: 200px;
+}
+
+.content .btn-add{
+    height: 50px;
+    width: 350px;
+}
+
+.content .btn-search{
+    width: 100px;
+}
+
+.fa-pen-to-square{
+    color: green;
+}
+
+.fa-trash{
+    color: red;
+}
+/* Estilizando o botão base*/
+
+.btn-primary{
+    background-color: #9120bd;
+    border: #9120bd 1px solid;
+}
+
+.btn-primary:hover{
+    background-color: #b346d3;
+    border: #b346d3 1px solid;
+}
+
+.btn-primary:active{
+    background-color: #b28015 !important;
+    border: #b28015 1px solid !important;
+}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Adicionar livro{% endblock %}
+
+{% block content%}
+<div class="offset-1 col-10 list-div">
+    <h1 class="text-center my-3">Adicione um novo livro</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" class="btn btn-success my-2" value="Salvar livro">
+        <br>
+    </form>
+</div>
+{% endblock %}
