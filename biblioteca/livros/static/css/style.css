@@ -8,21 +8,14 @@
 /* Navbar */
 
 .navbar{
-    background-color: #b28015 !important;
+    background-color: #b346d3 !important;
 }
 
-.nav-link{
-    color: white !important;
-}
-
-.navbar a{
-    color: white;
-}
 
 /* rodapé */
 
 .rodape{
-    background-color: rgba(0, 0, 0, 0.829);
+    background-color: #b346d3;
     height: 250px;
 }
 
@@ -52,6 +45,20 @@
 
 .fa-trash{
     color: red;
+}
+
+.fa-eye{
+    color: #9120bd;
+}
+
+.fa-backward{
+    color: black;
+    font-size: 30px;
+}
+
+
+.card-body{
+    height: 82px;
 }
 /* Estilizando o botão base*/
 

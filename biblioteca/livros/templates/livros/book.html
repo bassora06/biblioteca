@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Adicionar livro{% endblock %}
+
+{% block content%}
+<div class="offset-1 col-10 list-div mt-5 mb-5">
+    <div class="card text-center">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-1 justify-content-center pt-3"><a href=".."><i class="fa-solid fa-backward d-inline-block"></i></a></div>
+                <div class="col-11"><h1 class="d-inline-block pe-5 pt-2">{{livro.titulo}}</h1></div>
+            </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{livro.descricao}}</p>
+        </div>
+        <div class="card-footer text-body-secondary">
+            <div class="row">
+                <div class="col"><span class="text-start mx-5">Autor: {{livro.autor}}</span></div>
+                <div class="col"><span class="text-center mx-5">Idioma: {{livro.idioma}}</span></div>
+                <div class="col"><span class="text-end mx-5">Editora: {{livro.editora}}</span></div>
+            </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

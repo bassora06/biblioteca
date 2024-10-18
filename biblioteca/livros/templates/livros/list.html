@@ -14,7 +14,7 @@
       </button></a
     >
     <input
-      class="form-control me-2"
+      class="form-control me-2 d-md-block"
       type="search"
       placeholder="Search"
       aria-label="Search"
@@ -26,18 +26,19 @@
 </div>
 <div class="container">
     <table class="table  table-striped">
-        <a href="livro/{{livro.id}}">
             <thead>
                 <tr>
+                <th scope="col"></th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Autor</th>
                 <th scope="col">Editora</th>
                 </tr>
             </thead>
-        </a>
     <tbody>
     {% for livro in livros %}
+    <a href="livro/{{livro.id}}">
       <tr>
+        <td><a href="book/{{livro.id}}"><i class="fa-solid fa-eye"></i></a></td>
         <td>{{livro.titulo}}</td>
         <td>{{livro.autor}}</td>
         <td>{{livro.editora}}</td>
@@ -46,6 +47,7 @@
             <a href="deleteBook/{{livro.id}}"><i class="fa-solid fa-trash"></i></a>
         </td>
       </tr>
+    </a>
     {% endfor %}
     </tbody>
   </table>
