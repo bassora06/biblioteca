@@ -77,3 +77,9 @@
     border: #b28015 1px solid !important;
 }
 
+/* alertas */
+
+
+ul.messages li{
+    list-style: none;
+}

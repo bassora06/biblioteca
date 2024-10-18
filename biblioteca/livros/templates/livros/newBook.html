@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block title%}Adicionar livro{% endblock %}
 
@@ -8,7 +9,7 @@
     <h1 class="text-center my-3">Adicione um novo livro</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p}}
+        {{ form|crispy }}
         <input type="submit" class="btn btn-success my-2" value="Criar livro">
         <br>
     </form>
