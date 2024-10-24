@@ -1,15 +1,31 @@
+# importações 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .forms import BookForm
-from django.contrib import messages
+from django.http import HttpResponse            #  requisição
+from .forms import BookForm                     #  form de livros
+from django.contrib import messages             # mensagens para exibição do usuáio
+from django.core.paginator import Paginator     #  classe de paginação do django
 from .models import Livros
-
-# Create your views here.
 
 
 # lista todos os livros no front end
 def listBook(request):
-    livros = Livros.objects.all() # pega todos os objetos da tabela livros do banco
+
+    search = request.GET.get('search')  # o search passado com parametro do método get é o name do input de busca
+
+    if search:
+
+        livros = Livros.objects.filter(titulo__icontains=search)
+    
+    else:
+
+        livros_list = Livros.objects.all().order_by('titulo') # pega todos os objetos da tabela livros do banco
+
+        paginator = Paginator(livros_list, 5) # recebe variavel de lista de livros e quantidade
+
+        page = request.GET.get('page') # variavel recebe a requesção da página por get
+
+        livros = paginator.get_page(page) # a paginação pega o dado da página e coloca na variavel livros
+
     return render(request, 'livros/list.html', {'livros' : livros})
 
 

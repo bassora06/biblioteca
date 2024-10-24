@@ -47,9 +47,6 @@
     color: red;
 }
 
-.fa-eye{
-    color: #9120bd;
-}
 
 .fa-backward{
     color: black;
@@ -83,3 +80,10 @@
 ul.messages li{
     list-style: none;
 }
+
+/* paginação */
+
+.icone{
+    color: #9120bd;
+}
+

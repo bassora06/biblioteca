@@ -7,56 +7,81 @@
 <div class="container text-center content">
   <h1>Bem vindo a página de livros</h1>
   <p>Nessa página você poderá ver os livros cadastrados no sistema.</p>
-  <form class="d-flex px-5" role="search">
+  <form class="d-flex px-5" role="search" name="search" method="GET" id="search-form">
     <a href="newBook/">
       <button type="button" class="btn btn-primary btn-add me-5">
         <i class="fa-solid fa-plus"></i> Adicionar livro
-      </button></a
-    >
-    <input
-      class="form-control me-2 d-md-block"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button type="button" class="btn btn-primary btn-search">
-      <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
+      </button>
+    </a>
+    <!-- Área de pesquisa -->
+    <input class="form-control me-2 d-md-block" type="search" placeholder="Pesquisar" aria-label="Search" name="search"/>
+    <button type="button" class="btn btn-primary btn-search" id="search-btn">
+      <i class="fa-solid fa-magnifying-glass"></i>
     </button>
   </form>
 </div>
-<div class="container ">
-    {% if messages %}
-      <ul class="messages p-0">
-        {% for message in messages %}
-          <li {% if message.tags%}class="alert alert-{{message.tags}} text-center"{% endif %}>{{message}}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-    <table class="table  table-striped">
-            <thead>
-                <tr>
-                <th scope="col"></th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Autor</th>
-                <th scope="col">Editora</th>
-                </tr>
-            </thead>
-    <tbody>
-    {% for livro in livros %}
-    <a href="livro/{{livro.id}}">
-      <tr>
-        <td><a href="book/{{livro.id}}"><i class="fa-solid fa-eye"></i></a></td>
-        <td>{{livro.titulo}}</td>
-        <td>{{livro.autor}}</td>
-        <td>{{livro.editora}}</td>
-        <td>
-            <a href="editBook/{{livro.id}}" class="px-2"><i class="fa-solid fa-pen-to-square"></i></a>
-            <a href="deleteBook/{{livro.id}}"><i class="fa-solid fa-trash"></i></a>
-        </td>
-      </tr>
-    </a>
+<div class="container">
+  {% if messages %}
+  <ul class="messages p-0">
+    {% for message in messages %}
+    <li {% if message.tags %} class="alert alert-{{message.tags}} text-center"{% endif %}>
+      {{message}}
+    </li>
     {% endfor %}
+  </ul>
+  {% endif %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Editora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for livro in livros %}
+      <a href="livro/{{livro.id}}">
+        <tr>
+          <td>
+            <a href="book/{{livro.id}}"
+              ><i class="fa-solid fa-eye icone"></i
+            ></a>
+          </td>
+          <td>{{livro.titulo}}</td>
+          <td>{{livro.autor}}</td>
+          <td>{{livro.editora}}</td>
+          <td>
+            <a href="editBook/{{livro.id}}" class="px-2"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+            <a href="deleteBook/{{livro.id}}" class="delete-btn"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+          </td>
+        </tr>
+      </a>
+      {% endfor %}
     </tbody>
   </table>
+  <div class="text-center mb-3">
+    <span class="mx-auto position-relative">
+      {% if livros.has_previous %}
+      <a href="?page={{ livros.previous_page_number}}"
+        ><i class="fa-solid fa-arrow-left icone"></i
+      ></a>
+      {% endif %}
+
+      <span class="mx-2">
+        {{ livros.number }} de {{ livros.paginator.num_pages }}
+      </span>
+
+      {% if livros.has_next %}
+      <a href="?page={{ livros.next_page_number }}"
+        ><i class="fa-solid fa-arrow-right icone"></i
+      ></a>
+      {% endif %}
+    </span>
+  </div>
 </div>
 {% endblock %}
