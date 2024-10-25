@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'livros',
     'crispy_forms',
     'crispy_bootstrap5',
+    'contas',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -120,7 +121,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGIN_URL = 'accounts/'  # Define a URL para a tela de login
+LOGIN_URL = 'contas/'  # Define a URL para a tela de login
 
 LOGIN_REDIRECT_URL = "/"
 
