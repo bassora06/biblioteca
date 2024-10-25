@@ -3,7 +3,8 @@
 {% block title %}Livros{% endblock %} 
 
 {% block content%}
-<br />
+<br/>
+{% if user.is_authenticated%}
 <div class="container text-center content">
   <h1>Bem vindo a página de livros</h1>
   <p>Nessa página você poderá ver os livros cadastrados no sistema.</p>
@@ -14,7 +15,7 @@
       </button>
     </a>
     <!-- Área de pesquisa -->
-    <input class="form-control me-2 d-md-block" type="search" placeholder="Pesquisar" aria-label="Search" name="search"/>
+    <input class="form-control me-2 d-md-block" value="{{ request.GET.search }}"type="search" placeholder="Pesquisar" aria-label="Search" name="search"/>
     <button type="button" class="btn btn-primary btn-search" id="search-btn">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>
@@ -84,4 +85,9 @@
     </span>
   </div>
 </div>
+{% else %}
+<div class="container text-center py-3" style="height: 11rem; margin-top: 7rem;">
+  <h1>Usuário desconectado, faça o login para continuar</h1>
+</div>
+{% endif %}
 {% endblock %}

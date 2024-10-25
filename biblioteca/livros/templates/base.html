@@ -20,30 +20,58 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class=" container-fluid ">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary text-big">
+      <div class="container-fluid">
+        
+        <!-- Logo no lado esquerdo -->
         <a class="navbar-brand" href="/">Book Store</a>
+    
+        <!-- Botão de toggle para dispositivos móveis -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse justify-content-center"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+    
+        <!-- Conteúdo da navbar -->
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          
+          <!-- Itens centrais -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item ps-3">
+              <a class="nav-link active" aria-current="page" href="#">Sobre</a>
             </li>
-            <li class="nav-item px-5">
-              <a class="nav-link active" href="#">Usuários</a>
+    
+            {% if user.is_authenticated %}
+            <li class="nav-item px-3">
+              <a class="nav-link active" aria-current="page" href="/">Livros</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Pricing</a>
+            <li class="nav-item px-3">
+              <a class="nav-link active" aria-current="page" href="#">Usuário</a>
             </li>
+            {% endif %}
           </ul>
+    
+          <!-- Botão "Sair" ou "Entrar" no lado direito -->
+          <ul class="navbar-nav ">
+            {% if user.is_authenticated %}
+            <li class="nav-item d-flex align-items-center">
+              <span>Olá, {{ user.username }}</span>
+              <form action="{% url 'logout' %}" method="post" class="ms-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Sair</button>
+              </form>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
+            </li>
+            {% endif %}
+          </ul>
+          
         </div>
       </div>
     </nav>
+    
+    
     {% block content%}{% endblock %}
     <footer >
       <div class="rodape container-fluid text-center pt-5">

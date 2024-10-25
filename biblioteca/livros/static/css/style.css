@@ -5,6 +5,14 @@
     font-style: normal; 
 }
 
+.text-big{
+    font-family: "Bebas Neue", sans-serif;  
+    font-size: 22px;
+    font-style: normal; 
+}
+
+
+
 /* Navbar */
 
 .navbar{
@@ -87,3 +95,8 @@ ul.messages li{
     color: #9120bd;
 }
 
+/* login */
+
+.login{
+    list-style: none;
+}

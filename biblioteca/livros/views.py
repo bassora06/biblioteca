@@ -14,7 +14,9 @@ def listBook(request):
 
     if search:
 
-        livros = Livros.objects.filter(titulo__icontains=search)
+        livros_search = Livros.objects.filter(titulo__icontains=search)
+
+        paginator = Paginator(livros_search, 5)
     
     else:
 
@@ -22,9 +24,9 @@ def listBook(request):
 
         paginator = Paginator(livros_list, 5) # recebe variavel de lista de livros e quantidade
 
-        page = request.GET.get('page') # variavel recebe a requesção da página por get
+    page = request.GET.get('page') # variavel recebe a requesção da página por get
 
-        livros = paginator.get_page(page) # a paginação pega o dado da página e coloca na variavel livros
+    livros = paginator.get_page(page) # a paginação pega o dado da página e coloca na variavel livros
 
     return render(request, 'livros/list.html', {'livros' : livros})
 
